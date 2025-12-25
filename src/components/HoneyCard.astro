@@ -1,0 +1,43 @@
+---
+const { title, price, img } = Astro.props;
+const PHONE = "+375333800329";   // ← твой номер
+const EMAIL = "kirsem797@gmail.com"; // ← твоя почта
+---
+
+<div class="card">
+  <img src={img} alt={title} />
+  <h3>{title}</h3>
+  <p class="price">{price} ₽ за 0,5 л</p>
+
+  <div class="buttons">
+    <a href={`tel:${PHONE}`}
+       class="btn-call"
+       onmouseover="this.innerHTML=this.dataset.num;"
+       onmouseout="this.innerHTML='📞 Позвонить';"
+       data-num={PHONE}>
+      📞 Позвонить
+    </a>
+
+    <a href={`mailto:${EMAIL}?subject=Заказ мёда ${title}&body=Здравствуйте! Хочу заказать мёд ${title}, 0,5 л.`}
+       class="btn-mail">
+      ✉️ Написать
+    </a>
+  </div>
+</div>
+
+<style>
+  :root { --gold: #d4af37; --surface: #1a1a1a; }
+  .card { background: var(--surface); border: 1px solid #2e2e2e; border-radius: 8px; padding: 1rem; text-align: center; transition: transform .2s; }
+  .card:hover { transform: translateY(-4px); }
+  img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; }
+  h3 { margin: .7rem 0 .3rem; font-size: 1.1rem; color: var(--gold); }
+  .price { color: #ccc; font-weight: 700; margin: .5rem 0 1rem; }
+  .buttons { display: flex; gap: .5rem; justify-content: center; }
+  .btn-call, .btn-mail {
+    flex: 1; text-decoration: none; padding: .55rem 1rem;
+    border-radius: 4px; font-weight: 600; font-size: .9rem;
+  }
+  .btn-call { background: #25d366; color: #fff; }
+  .btn-mail { background: #0088cc; color: #fff; }
+  .btn-call:hover, .btn-mail:hover { filter: brightness(1.15); }
+</style>

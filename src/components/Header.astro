@@ -1,0 +1,35 @@
+<header class="header">
+  <div class="container">
+    <a href="/" class="logo">🍯 Пасека Семьи Ивановых</a>
+    <nav>
+      <a href="#catalog">Каталог</a>
+      <a href="#about">О нас</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  :root { --gold: #d4af37; --black: #0f0f0f; --gray: #e5e5e5; }
+  .header {
+    background: var(--black);
+    box-shadow: 0 2px 6px rgba(212,175,55,.25);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .container {
+    max-width: 960px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.5rem;
+  }
+  .logo {
+    font-weight: 700; color: var(--gold);
+    text-decoration: none; font-size: 1.1rem;
+  }
+  nav a {
+    margin-left: 1.2rem; color: var(--gray);
+    text-decoration: none; font-weight: 500;
+  }
+  nav a:hover { color: var(--gold); }
+
+  @media (max-width: 600px) { nav { display: none; } }
+</style>
