@@ -22,7 +22,7 @@ import HoneyCard from '../components/HoneyCard.astro';
         <p>Ручной отбор. Без сахара. С нашей пасеки — прямо к вашему столу.</p>
         <a href="#catalog" class="btn">Смотреть каталог</a>
       </div>
-      <img src="/public/images/Paseka.png" alt="Beekeeping" class="hero-image" />
+      <img src="/images/hero.png" class="hero-image">
     </section>
 
     <!-- CATALOG -->
@@ -30,9 +30,9 @@ import HoneyCard from '../components/HoneyCard.astro';
       <div class="container">
         <h2>Каталог мёда</h2>
         <div class="grid">
-          <HoneyCard title="Перга" price="600" <img src="/public/images/Perga.jpeg"/> />
-          <HoneyCard title="Липовый" price="550" <img src="/public/images/Honey1.jpg"/> />
-          <HoneyCard title="Воск" price="500" <img src="/public/images/Vosk.jpg"/> />
+          <HoneyCard title="Перга" price="600" img="/images/perga.jpeg" />
+          <HoneyCard title="Липовый" price="550" img="/images/honey.jpg" />
+          <HoneyCard title="Воск" price="500" img="/images/vosk.jpg" />
         </div>
       </div>
     </section>
@@ -54,7 +54,7 @@ import HoneyCard from '../components/HoneyCard.astro';
     <section id="contacts" class="contacts">
       <div class="container">
         <h2>Контакты</h2>
-        <p>Телефон / WhatsApp: <a href="https://wa.me/79001234567">+7 900 123-45-67</a></p>
+        <p>Телефон / WhatsApp: <a href="https://wa.me/375333800329">+375 333 800329</a></p>
         <p>Адрес: Московская обл., г. Пушкино, ул. Пасечная, д. 1</p>
         <p>Время работы: пн-вс 9:00–19:00</p>
       </div>
@@ -62,7 +62,7 @@ import HoneyCard from '../components/HoneyCard.astro';
 
     <Footer />
 
-    <!-- GLOBAL DARK-STYLES -->
+    <!-- GLOBAL STYLES -->
     <style>
       :global(:root) {
         --gold: #d4af37;
@@ -107,29 +107,16 @@ import HoneyCard from '../components/HoneyCard.astro';
         background: rgba(0, 0, 0, .6);
       }
       .hero-text { position: relative; z-index: 1; }
-      .hero h1 {
-        font-size: 2.8rem;
-        margin-bottom: 1rem;
-        text-shadow: 0 0 10px rgba(212, 175, 55, .5);
-        animation: fadeInUp 1s ease forwards;
-      }
-      .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        animation: fadeInUp 1.2s ease forwards;
-      }
-      .hero .btn {
-        animation: fadeInUp 1.4s ease forwards;
-      }
-      .hero-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0;
-        animation: fadeIn 1.6s ease forwards;
+      .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; text-shadow: 0 0 10px rgba(212, 175, 55, .5); }
+      .hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+      .hero-image { 
+        position: absolute; 
+        top: 100; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        opacity: 0.1;
       }
 
       /* CATALOG */
@@ -144,30 +131,6 @@ import HoneyCard from '../components/HoneyCard.astro';
 
       /* CONTACTS */
       .contacts { padding: 3rem 0; }
-
-      /* ANIMATIONS */
-      @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      /* перебиваем стили кнопки при наведении */
-      a.btn-call[data-astro-cid]:hover {
-        font-size: 0 !important;
-        line-height: 0 !important;
-        color: transparent !important;
-      }
-      a.btn-call[data-astro-cid]:hover::after {
-        content: attr(data-num);
-        display: block;
-        font-size: .95rem !important;
-        line-height: normal !important;
-        color: #fff !important;
-        margin-top: .2rem;
-      }
     </style>
   </body>
 </html>
