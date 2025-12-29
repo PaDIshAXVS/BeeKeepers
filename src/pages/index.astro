@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import HoneyCard from '../components/HoneyCard.astro';
+import { products } from '../data/products.js';
 ---
 
 <html lang="ru">
@@ -20,7 +21,7 @@ import HoneyCard from '../components/HoneyCard.astro';
       <div class="hero-text">
         <h1>Мёд премиум-класса</h1>
         <p>Ручной отбор. Без сахара. С нашей пасеки — прямо к вашему столу.</p>
-        <a href="#catalog" class="btn">Смотреть каталог</a>
+        <a href="/catalog" class="btn">Смотреть каталог</a>
       </div>
       <img src="/images/hero.png" class="hero-image">
     </section>
@@ -30,9 +31,13 @@ import HoneyCard from '../components/HoneyCard.astro';
       <div class="container">
         <h2>Каталог мёда</h2>
         <div class="grid">
-          <HoneyCard title="Перга" price="600" img="/images/Perga.jpeg" />
-          <HoneyCard title="Липовый" price="550" img="/images/honey.jpg" />
-          <HoneyCard title="Воск" price="500" img="/images/Vosk.jpg" />
+          {products.map(p => (
+            <HoneyCard 
+              title={p.title} 
+              price={p.price} 
+              img={p.img} 
+            />
+          ))}
         </div>
       </div>
     </section>

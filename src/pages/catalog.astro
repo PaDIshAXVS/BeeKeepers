@@ -1,0 +1,100 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HoneyCard from '../components/HoneyCard.astro';
+import { products } from '../data/products.js'; // ← БЕРЁМ ИЗ ФАЙЛА
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Каталог мёда – Пасека Семьи Ивановых</title>
+    <meta name="description" content="Полный каталог натурального мёда с нашей пасеки." />
+  </head>
+
+  <body>
+    <Header />
+
+    <!-- HERO КАТАЛОГА -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Каталог мёда</h1>
+        <p>Весь ассортимент натурального продукта с нашей пасеки</p>
+      </div>
+      <img src="/images/hero.png" alt="Beekeeping" class="hero-image" />
+    </section>
+
+    <!-- КАТАЛОГ — ДИНАМИЧЕСКИЙ -->
+    <section id="catalog" class="catalog">
+      <div class="container">
+        <h2>Наши товары</h2>
+        <div class="grid">
+          {products.map(p => (
+            <HoneyCard 
+              title={p.title} 
+              price={p.price} 
+              img={p.img} 
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+
+    <style>
+      :global(:root) {
+        --gold: #d4af37;
+        --black: #0f0f0f;
+        --surface: #1a1a1a;
+        --gray: #e5e5e5;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        background: var(--black);
+        color: var(--gray);
+      }
+      h1, h2, h3 { color: var(--gold); }
+      .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
+
+      /* HERO */
+      .hero {
+        position: relative;
+        min-height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, .6);
+      }
+      .hero-text { position: relative; z-index: 1; }
+      .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; text-shadow: 0 0 10px rgba(212, 175, 55, .5); }
+      .hero p { font-size: 1.1rem; margin-bottom: 2rem; }
+      .hero-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* CATALOG */
+      .catalog { padding: 3.5rem 0; }
+      .catalog h2 { text-align: center; margin-bottom: 2rem; font-size: 2rem; }
+      .grid {
+        display: grid !important;
+        gap: 1.5rem !important;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+      }
+    </style>
+  </body>
+</html>
